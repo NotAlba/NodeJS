@@ -19,13 +19,13 @@ app.post('/login', function (req, res) {
   var inputUser = req.body.username;
   var inputPassword = req.body.password;
   if (localStorage.getItem(inputUser)) {
-  	if (inputPassword == localStorage.getItem(inputUser)) {
-  		user = inputUser;
-  	}else{
-  		user= "";
-  	}
+    if (inputPassword == localStorage.getItem(inputUser)) {
+      user = inputUser;
+    }else{
+      user= "";
+    }
   }else{
-  	user=""
+    user=""
   }
   res.render('loginFormPost.ejs', {user:user})
 });
@@ -39,19 +39,19 @@ app.post('/register', function (req, res) {
   var pass = req.body.password;
   var pass2 = req.body.passwordConf;
   
-  console.log(users);
+  
   if (pass==pass2) {
-  	passwordStatus="OK";
+    passwordStatus="OK";
   }else{
-  	passwordStatus="KO";
+    passwordStatus="KO";
   }
   if (localStorage.getItem(name)) {
-  	usernameStatus= "KO";
+    usernameStatus= "KO";
   }else{
-  	usernameStatus= "OK";
+    usernameStatus= "OK";
   }
   if (usernameStatus=="OK" && passwordStatus=="OK") {
-  	localStorage.setItem(name, pass)
+    localStorage.setItem(name, pass)
   }
   res.render('registerFormPost.ejs', {passStatus:passwordStatus,userStatus:usernameStatus})
 });
